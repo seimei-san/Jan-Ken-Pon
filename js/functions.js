@@ -41,7 +41,7 @@ function selectSpaakTextDuringChallegne(winner) {
 function generateSpeakTextDuringChallenge(user_name) {
   let oresama_win_speak1 = "ワッハッハー<br>顔を洗って<br>出直しきな！";
   let oresama_win_speak2 = user_name + "<br>オレ様には勝てないぜ！";
-  let oresama_win_speak3 = user_name + "<br>おとなしく帰って<br>寝てなさい！";
+  let oresama_win_speak3 = user_name + "<br>おとなし帰って<br>寝てなさい！";
   let oresama_win_speak4 = "オレ様に勝つなんざ<br>１０年早いぜ！<br>" + user_name;
   let omae_lose_speak1 = "・・・・・";
   let omae_lose_speak2 = "くっそ！";
@@ -251,8 +251,10 @@ function insertWinnerLogo(winner) {
   body_main.insertAdjacentHTML("beforeend", html_winnder_log);
   let winner_box = document.getElementById('winner_box');
   if (winner === 'oresama') {
+    playVoice('ohhh.m4a');
     winner_box.style.left = '650px';
   } else {
+    playVoice('bravo.m4a');
     winner_box.style.left = '250px';
   }
 }

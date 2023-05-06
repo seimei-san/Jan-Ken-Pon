@@ -26,8 +26,6 @@ window.addEventListener('load', () => {
         displayNotAtMaxRound();    
       }
     } else {
-      setLocalStrageByJson(default_jankenpon_json);  // if User Info not exists, load the intial user info
-      loadUserPoints(loadUserInfo());
       displaySpeak(html_oresama_speak1, 'oresama_text1',"オマエは誰だ？")
       .then(() => {
         displaySpeak(html_oresama_speak2, 'oresama_text2',"名前を入れろ！<br>始めるぞ！")
@@ -115,7 +113,11 @@ function omaeGuChokiPa(omae_result) {
           .then (() => {
             let omae_point = loadUserPoints(loadLocalStorage());
             displayAtMaxRound(omae_point["omae_win"], user_name, omae_point["omae_point"], omae_point["oresama_point"] );
-            insertWinnerLogo('omae');
+            if (omae_point['omae_win']) {
+              insertWinnerLogo('omae');
+            } else {
+              insertWinnerLogo('oresama');
+            }
           })
         }
       } else if (winner === 'oresama') {  
@@ -127,7 +129,6 @@ function omaeGuChokiPa(omae_result) {
         let oresama_win_speak = selectSpaakTextDuringChallegne('oresama');
         if (round < 5) {
           displaySpeak(html_oresama_speak1, 'oresama_text1', oresama_win_speak[0])
-          // displaySpeak(html_oresama_speak1, 'oresama_text1', `ハッハッハッ<br>顔を洗って<br>出直してこい！`)
           .then (() => {
             displaySpeak(html_omae_speak1, 'omae_text1', oresama_win_speak[1]);
           })
@@ -136,7 +137,11 @@ function omaeGuChokiPa(omae_result) {
           .then(() => {
             let omae_point = loadUserPoints(loadLocalStorage());
             displayAtMaxRound(omae_point["omae_win"], user_name, omae_point["omae_point"], omae_point["oresama_point"] );
-            insertWinnerLogo('oresama');
+            if (omae_point['omae_win']) {
+              insertWinnerLogo('omae');
+            } else {
+              insertWinnerLogo('oresama');
+            }
           })
         }
       } else {  // Aiko 
@@ -157,6 +162,7 @@ function omaeGuChokiPa(omae_result) {
 // ###################### Start Jankenpon ##########################
 // ########### Executed by onclick = startJankenpon in HTML ########
 function startJankenpon() {
+  setLocalStrageByJson(default_jankenpon_json);  // if User Info not exists, load the intial user info
   const input_user_name = document.getElementById('input_user_name');
   const div_start_box = document.getElementById('start_box');
   const regex = new RegExp(/^[^\x20-\x7e]{1,5}$/);
@@ -232,18 +238,16 @@ function quitJankenpon(id) {
         removeTalk('omae_speak2')
         .then (() => {
           removeBox(id).then(() => {
-            // setLocalStrage('オマエ', 0, 0, 0, 0, 0, 0);  // if User Info not exists, load the intial user info
-            setLocalStrageByJson(default_jankenpon_json);  // if User Info not exists, load the intial user info
-            loadUserPoints(loadUserInfo());
             displaySpeak(html_oresama_speak1, 'oresama_text1',"オマエは誰だ？")
             .then(() => {
               displaySpeak(html_oresama_speak2, 'oresama_text2',"名前を入れろ！<br>始めるぞ！")
               .then(() => {
+                localStorage.removeItem('jankenpon');
                 const div_controller = document.getElementById('controller');
                 div_controller.insertAdjacentHTML('beforeend', html_start_box);
           
               })
-            }) //.catch('cannot remove');
+            }).catch('cannot remove');
           })
         })
       })
