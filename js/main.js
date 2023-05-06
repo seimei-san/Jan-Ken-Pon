@@ -229,6 +229,7 @@ function quitJankenpon(id) {
   div_sub_title.innerHTML = '勝つのはどいつだ？？？'
   localStorage.removeItem('jankenpon');
   removeGuChokiPa();
+  loadUserPoints(default_jankenpon_json);
   removeTalk('oresama_speak1')
   .then(() => {
     removeTalk('oresama_speak2')
