@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/games.css">
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <title>JAN KEN PON!</title>
+</head>
+
+<body>
+    <header>
+        <div class="score_box">
+            <!-- 画面左がオマエの得点 -->
+            <!-- 画面右がオレ様の得点　 -->
+            <div class="score_box_left">
+                <img src="img/null.png" alt="omae_point_roun1" class="point" id="omae_point_round1">
+                <img src="img/null.png" alt="omae_point_round2" class="point" id="omae_point_round2">
+                <img src="img/null.png" alt="omae_point_round3" class="point" id="omae_point_round3">
+                <img src="img/null.png" alt="omae_point_round4" class="point" id="omae_point_round4">
+                <img src="img/null.png" alt="omae_point_round5" class="point" id="omae_point_round5">
+            </div>
+            <div class="title" id="title"><p>早打ちじゃんけんぽん対決！</p><p id="sub_title">勝つのはどいつだ？</p></div>
+            <div class="Score_box_right">
+                <img src="img/null.png" alt="oresama_point_round1" class="point" id="oresama_point_round1">
+                <img src="img/null.png" alt="oresama_point_round2" class="point" id="oresama_point_round2">
+                <img src="img/null.png" alt="oresama_point_round3" class="point" id="oresama_point_round3">
+                <img src="img/null.png" alt="oresama_point_round4" class="point" id="oresama_point_round4">
+                <img src="img/null.png" alt="oresama_point_round5" class="point" id="oresama_point_round5">
+            </div>
+        </div>
+    </header>
+    <main class="body_main" id="body_main">
+        <p class="user_name">オマエ</p>
+        <div class="dialog" id="dialog">
+            <p>名前を入れ直せ！</p>
+            <p>全角５文字までだ！</p><br>
+            <button id="btn_yes">わかりました</button>
+        </div>
+    </main>
+    <div class="controller" id="controller">
+    </div>
+    <div class="spacer">
+    </div>
+    <footer>
+        copyrights 2023 DREAM-LINAKGE All Rights Reserved; Sounde Source: びたちー素材館
+    </footer>
+    <script src="js/variables.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    </script>
+ 
+</body>
+
+</html>
